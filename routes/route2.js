@@ -1,7 +1,8 @@
 module.exports = (app) => {
-  app.get("/route2/test", async (req, res) => {
+  app.post("/route2/test", async (req, res) => {
     try {
-      res.send({ test: "jsonObj" });
+      const { param1 } = req.body;
+      res.send({ testParameter: param1 });
     } catch (err) {
       res.send(404);
     }
