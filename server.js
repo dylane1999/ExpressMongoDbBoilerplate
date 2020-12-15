@@ -14,8 +14,8 @@ app.use(express.urlencoded({ extended: false }));
 require("./routes/route1")(app);
 require("./routes/route2.js")(app);
 
-var port = process.env.PORT;
+var port = process.env.PORT || 5000;
 
 app.listen(port, () => {
-	console.log('server started on port 5000');
+	console.log(`server started on port ${port}`);
 });

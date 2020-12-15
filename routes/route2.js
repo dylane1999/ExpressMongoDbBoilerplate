@@ -4,7 +4,7 @@ module.exports = (app) => {
       const { param1 } = req.body;
       res.send({ testParameter: param1 });
     } catch (err) {
-      res.send(404);
+      res.status(400).send(err);
     }
   });
 };
