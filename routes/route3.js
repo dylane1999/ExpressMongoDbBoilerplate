@@ -15,7 +15,7 @@ module.exports = (app) => {
 const saveUser = async (userName) => {
   try {
     const newUser = new User({ name: userName });
-    const savedUser = newUser.save();
+    const savedUser = await newUser.save();
     console.log(savedUser, "user has been saved in Db ");
     return savedUser;
   } catch (error) {
