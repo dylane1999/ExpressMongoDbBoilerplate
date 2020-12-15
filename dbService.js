@@ -1,6 +1,7 @@
 // Connect Mongo DB
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const { User } = require("./models");
 
 dotenv.config({ path: "./.env" });
 
@@ -25,6 +26,18 @@ try {
 class DbService {
   static getDbServiceInstance() {
     return instance ? instance : new DbService();
+  }
+
+  async saveUser(userName) {
+    try {
+      const newUser = new User({ name: userName });
+      const savedUser = newUser.save();
+      console.log(savedUser, "user has been saved in Db ");
+      return savedUser;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 }
 
