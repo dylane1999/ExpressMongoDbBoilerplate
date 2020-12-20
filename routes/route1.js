@@ -3,7 +3,7 @@ module.exports = (app) => {
     try {
       res.send({ test: "jsonObj" });
     } catch (err) {
-      res.status(400).send(err);
+      res.status(500).send(err);
     }
   });
 };

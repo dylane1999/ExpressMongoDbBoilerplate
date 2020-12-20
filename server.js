@@ -12,8 +12,8 @@ app.use(express.urlencoded({ extended: false }));
 
 require("./routes/route1")(app);
 require("./routes/route2.js")(app);
-require("./routes/route3.js")(app);
-require("./routes/route4.js")(app);
+require("./routes/userRoutes.js")(app);
+// require("./routes/route4.js")(app);
 
 var port = process.env.PORT || 5000;
 

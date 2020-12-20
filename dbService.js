@@ -50,6 +50,16 @@ class DbService {
       return error;
     }
   }
+
+  async getUserByName(userName) {
+    try {
+      const user = await User.find({ name: userName });
+      return user;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
 }
 
 module.exports = DbService;
