@@ -31,9 +31,20 @@ class DbService {
   async saveUser(userName) {
     try {
       const newUser = new User({ name: userName });
-      const savedUser = newUser.save();
+      const savedUser = await newUser.save();
       console.log(savedUser, "user has been saved in Db ");
       return savedUser;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+
+  async getAllUsers() {
+    try {
+      // find all users
+      const allUsers = await User.find({});
+      return allUsers;
     } catch (error) {
       console.log(error);
       return error;

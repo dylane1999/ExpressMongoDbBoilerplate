@@ -1,10 +1,12 @@
-const { User } = require("../models");
+const dbService = require("../dbService");
 
 module.exports = (app) => {
   app.post("/route3/", async (req, res) => {
     try {
+      const db = dbService.getDbServiceInstance();
       const { userName } = req.body;
-      const savedUser = await saveUser(userName);
+      //another method: const userName = req.body.userName
+      const savedUser = await db.saveUser(userName);
       res.status(200).send(savedUser);
     } catch (err) {
       res.status(400).send(err);
@@ -12,14 +14,3 @@ module.exports = (app) => {
   });
 };
 
-const saveUser = async (userName) => {
-  try {
-    const newUser = new User({ name: userName });
-    const savedUser = await newUser.save();
-    console.log(savedUser, "user has been saved in Db ");
-    return savedUser;
-  } catch (error) {
-    console.log(error);
-    return (error);
-  }
-};
